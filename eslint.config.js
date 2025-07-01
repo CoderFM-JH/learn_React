@@ -23,6 +23,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types": "off", // pour désactver les règles liés à react/prop-types
     },
   },
 )
