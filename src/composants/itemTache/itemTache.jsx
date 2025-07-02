@@ -19,11 +19,11 @@ export const ItemTache = (
             <div className={styles.item}>
                <div className={`${styles.id} ${styles.idDefault}`}>
                   {tache.id} 
-                  1
+                  
                </div>
                <div className={styles.contentDefault}>
                   {tache.tache}
-                  test
+                  
                </div>
             </div>
             <button className="button-primary"
