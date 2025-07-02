@@ -1,0 +1,43 @@
+.composant {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border-radius: 8px;
+   border: 1px solid;
+   cursor: pointer;
+   font-weight: 500;
+   font-family: inherit;
+}
+
+.composant:hover {
+   background-color: rgb(182, 213, 250);
+}
+
+.item {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.default {
+   background-color: #c3ebef;
+   border-color: #272727 ;
+   padding: 0.3em 1.2em;
+}
+
+.id {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 30px;
+   border-radius: 9999px;
+   font-weight: 900;
+   font-size: 1.2em;
+   font-weight: 900;
+}
+
+
+
+
+
+

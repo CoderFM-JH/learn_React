@@ -1,8 +1,23 @@
 .styles {
-   color: rgb(41, 239, 236);
+   color: rgb(41, 239, 236); 
 }
 
-.logo {
+
+.composants {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 2px 0;
+   margin-bottom: 1px;
+}
+.titleComposants {
+   display: flex;
+   align-items: center;
+   gap: 1px;
+}
+
+
+/* .logo {
    height: 6em;
    padding: 1.5em;
    will-change: filter;
@@ -13,4 +28,4 @@
  }
  .logo.react:hover {
    filter: drop-shadow(0 0 2em #61dafbaa);
- }
+ } */
