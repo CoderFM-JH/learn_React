@@ -9,21 +9,18 @@ export const ItemTache = (
       deleteTache,
    }
 ) => {
-
+   
    return(
       <>
-
          <li className={`${styles.composant} ${styles.default}`}
             onClick={() => editTache(tache.id, !tache.termine)} // permet de faire passer le 'termine:false' à 'termine:true'
          > {/*definition de classe conditionnée : className={`${condition} ${condition}`}*/}
             <div className={styles.item}>
-               <div className={`${styles.id} ${styles.idDefault}`}>
+               <div className={`${styles.idd}  ${styles.idDefault}`}> {/*  */}
                   {tache.id} 
-                  
                </div>
                <div className={styles.contentDefault}>
                   {tache.tache}
-                  
                </div>
             </div>
             <button className="button-primary"
@@ -35,7 +32,7 @@ export const ItemTache = (
                Tache terminée
             </button>
          </li>
-
       </>
    );
+   
 }

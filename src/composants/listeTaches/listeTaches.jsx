@@ -15,14 +15,16 @@ export const ListeTaches = (
    }
 ) => {
 
-   const listTachek = listTache.map((tache) => ( //bucle pour  afficher la liste des tache
-      <ItemTache key={tache.id} 
+   const listTachek = listTache.map((tache) => ( //boucle pour  afficher la liste des taches
+      <ItemTache
+         key={tache.id} 
          tache={tache} 
          editTache={editTache} 
          deleteTache={deleteTache} />
    ));   
 
-   if (listTache && listTache.length>0){
+
+   if (listTache ){
       return(
          <>
             <div className={styles.cadre}>
@@ -35,7 +37,7 @@ export const ListeTaches = (
                      { listTachek }
                   </ul>
                ) }
-               {/* 
+               {/*                
                   {listTache && listTache.length > 0 && (
                   <ul className={styles.composant}>
                      {listTache.map((tache) => (

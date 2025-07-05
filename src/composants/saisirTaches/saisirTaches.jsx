@@ -1,11 +1,11 @@
 // pour afficher les champs de saisis des taches
 
 import { useState } from "react";
-import styles from "./inputTache.module.css";
+import styles from "./saisirTache.module.css";
 //import { ajouterTache } from "./composants/composantsTaches.jsx";
 
 // recupérer la propriété d'ajout de tache
-export const InputTache = ({ajouterTache}) => {
+export const SaisirTache = ({ajouterTache}) => {
 
    const [tache, setTache] = useState("");
       // console.log(tache);
@@ -23,7 +23,7 @@ export const InputTache = ({ajouterTache}) => {
          setTache(" "); // pour reinitialiser la zone de saisie de tache
       // console.log("envoi la tache", tache);
       } else {
-         console.log("le champ de saisis de tache est vide !"); //empty = vide
+         // console.log("le champ de saisis de tache est vide !"); //empty = vide
       }
    };
    

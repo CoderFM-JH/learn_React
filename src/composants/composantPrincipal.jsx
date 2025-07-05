@@ -1,13 +1,13 @@
 
 
 import { Header } from "./header/header.jsx";
-import { InputTache } from "./inputTaches/inputTaches.jsx";
+import { SaisirTache } from "./saisirTaches/saisirTaches.jsx";
 import { ListeTaches } from "./listeTaches/listeTaches.jsx";
 import { Footer } from "./footer/footer.jsx";
 import { useState } from "react";
 
 // composant pour afficher toutes les fonctionnalités
-export const ComposantTaches = () => {
+export const ComposantPrincipal = () => {
 
    const [listTache, setListTache] = useState(
       [
@@ -32,7 +32,7 @@ export const ComposantTaches = () => {
       ]
    );
 
-   console.log("liste de tache:", listTache);
+   // console.log("liste de tache:", listTache);
 
    const ajouterTache = (laTache) => {
       const newTache = {
@@ -63,9 +63,9 @@ export const ComposantTaches = () => {
       );
    };
 
-   const getCountTache = () => {
+   const getCountTache = () => { // pour compter le nombre de taches
       const tacheFinis = listTache.filter( (tache) => 
-            tache.termine === true
+            tache.termine == true
          ).length;
       const tacheNonFinis = listTache.length - tacheFinis;
       return (
@@ -74,14 +74,14 @@ export const ComposantTaches = () => {
       );
    }
       // pour afficher les résultats
-   const {tacheFinis, tacheNonFinis} = getCountTache;
-   console.log(tacheFinis, tacheNonFinis);
+   const {tacheFinis, tacheNonFinis} = getCountTache();
+   // console.log(tacheFinis, tacheNonFinis);
 
    return(
       <>
          <main>
             <Header />
-            <InputTache ajouterTache={ajouterTache} /> 
+            <SaisirTache ajouterTache={ajouterTache} /> 
             <ListeTaches 
                listTache={listTache} 
                editTache={editTache} 

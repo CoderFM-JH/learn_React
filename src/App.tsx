@@ -1,11 +1,11 @@
 import './App.css'
-import {ComposantTaches} from "./composants/composantsTaches.jsx";
+import {ComposantPrincipal} from './composants/composantPrincipal.jsx';
 
 function App() {
 
   return (
     <>
-      <ComposantTaches />
+      <ComposantPrincipal />
     </>
   );
 }
