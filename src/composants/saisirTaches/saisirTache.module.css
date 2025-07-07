@@ -13,21 +13,31 @@
    gap: 5px;
 }
 
-.title {
+.titre {
    margin-bottom: 10px;
+   color: rgb(2, 2, 66);
 }
 
 .input {
    background-color: #ecf3f2;
    bottom: 1px solid rgba(3, 1, 16, 0.467);
    background-repeat: 8px;
-   font-size: 16px;
+   font-size: 20px;
    height: 40px;
    width: 2000px;
    padding: 0 20px;
-   color: gray;
+   color: rgb(22, 2, 80);
+}
+
+.input:hover {
+   background-color: rgb(176, 244, 244);
+   color: rgb(31, 30, 30);
 }
 
 button:hover{
    background-color: aqua;
+}
+
+.bouton {
+   background: #61aeec;
 }

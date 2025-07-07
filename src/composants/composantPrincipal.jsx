@@ -1,94 +1,77 @@
 
-
 import { Header } from "./header/header.jsx";
-import { SaisirTache } from "./saisirTaches/saisirTaches.jsx";
-import { ListeTaches } from "./listeTaches/listeTaches.jsx";
 import { Footer } from "./footer/footer.jsx";
+import { ListeTaches } from "./listeTaches/listeTaches.jsx";
+// import { BlocDeChaqueTache } from "./itemTache/blocDeTache.jsx";
+import { SaisirTache } from "./saisirTaches/saisirTaches.jsx";
 import { useState } from "react";
 
-// composant pour afficher toutes les fonctionnalités
+
+// // composant pour afficher toutes les fonctionnalités
 export const ComposantPrincipal = () => {
 
-   const [listTache, setListTache] = useState(
-      [
-         //tableau de valeur pour le hook useState
-         {/*
-         {
-            id: 1,
-            tache: "finir le travail",
-            termine: false,
-         },
-         {
-            id: 2,
-            tache: "réparer la machine",
-            termine: false,
-         },
-         {
-            id: 3,
-            tache: "netoyer l'écran",
-            termine: true,
-         },
-         */}
-      ]
-   );
+   const [lesTaches, setTaches] = useState([
+      /*
+      {
+         id: 1,
+         tache: "programmer",
+         terminee: false
+      },
+      {
+         id: 2,
+         tache: "concevoir un système",
+         terminee: true
+      },
+      {
+         id: 3,
+         tache: "déployer l'application",
+         terminee: false
+      }
+      */
+   ]);
+   // console.log("liste des taches",lesTaches);
 
-   // console.log("liste de tache:", listTache);
-
-   const ajouterTache = (laTache) => {
-      const newTache = {
-         // id: 5,
-         // id: listTache.length + 1,
-         id: listTache.length ? listTache[listTache.length - 1].id + 1 : 1, //pour éviter les 'id' aléatoires
-         tache: laTache,
-         termine: false,
+   const ajouterTache = (tache) => {
+      const nouvelleTache = {
+         id: lesTaches.length + 1 , // pour avoir l'id de la nouvelle tache
+         tache: tache,
+         terminee: false
       };
-      //mettre la liste à jour avec l'ajout de nouvelle tache à la liste
-      setListTache([...listTache, newTache])
+      setTaches([...lesTaches, nouvelleTache]);
    };
-   // console.log(listTache.length); // la propriété 'length' permet de compter le nombre d'element
 
-   const editTache = (id, tacheTermine) => { //fonction pour ajouter la tache à la liste
-      setListTache(
-         listTache.map( (tache) =>
-            tache.id === id ? { ...tache, termine: tacheTermine}: tache
-         )
+   const modifierTache = (id, etatTache) => {
+      setTaches(
+         lesTaches.map((tache) =>   tache.id === id ? {...tache, terminee: etatTache} :tache  )
       );
    };
 
-   const deleteTache = (id) => { //fonction pour supprimer la tache à la liste
-      setListTache(
-         listTache.filter( (tache) => 
-            tache.id !== id // filtrer les éléments de la liste afin de recupérer et réafficher tout les éléments <> de l'id sélectionné
-         )
+   const supprimerTache = (id) => {
+      setTaches(
+         lesTaches.filter((tache) =>   tache.id !== id   )
       );
    };
 
-   const getCountTache = () => { // pour compter le nombre de taches
-      const tacheFinis = listTache.filter( (tache) => 
-            tache.termine == true
-         ).length;
-      const tacheNonFinis = listTache.length - tacheFinis;
-      return (
-         tacheFinis,
-         tacheNonFinis
-      );
-   }
-      // pour afficher les résultats
-   const {tacheFinis, tacheNonFinis} = getCountTache();
-   // console.log(tacheFinis, tacheNonFinis);
+   // const compterLesTaches = () => {
+   //    const tachesTerminees = lesTaches.filter((tache) => tache.terminee === true ).length;
+   //    const tachesNonTermines = lesTaches.length - tachesTerminees ;
+   //    return(
+   //       tachesTerminees, tachesNonTermines
+   //    );
+   // };
+   // const {tachesTerminees, tachesNonTermines} = compterLesTaches();
+   // // console.log(tachesTerminees, tachesNonTermines);
 
    return(
       <>
          <main>
             <Header />
-            <SaisirTache ajouterTache={ajouterTache} /> 
-            <ListeTaches 
-               listTache={listTache} 
-               editTache={editTache} 
-               deleteTache={deleteTache} 
-               tacheFinis={tacheFinis}
-               tacheNonFinis={tacheNonFinis}
+            <SaisirTache ajouterTache={ajouterTache} />
+            <ListeTaches lesTaches={lesTaches} 
+               modifierTache={modifierTache} 
+               supprimerTache={supprimerTache} 
             />
+            {/* <BlocDeChaqueTache />v */}
             <Footer />
          </main>
       </>
@@ -96,23 +79,4 @@ export const ComposantPrincipal = () => {
 }
 
 
-
-{/* 
-   explications:
-
-   importer le composant {ComposantTaches} de composantsTaches.jsx dans App
-   création du 'header'
-
-   dans le 'inputTaches':
-   créer le composant 'inputTache.jsx'
-
-   dans le 'listeTaches':
-   créer le composant 'listeTaches.jsx'
-
-   dans le 'itemTache':
-   créer le composant 'itemTache.jsx' et l'importer dans le 'listTaches.jsx'
-
-   réaliser le footer
-
-*/}
 

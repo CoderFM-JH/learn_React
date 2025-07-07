@@ -1,68 +1,42 @@
-// pour lister les taches
+import styles  from "./listeTaches.module.css";
+import { BlocDeChaqueTache } from "../itemTache/blocDeTache.jsx";
 
-import styles from "./listeTaches.module.css";
-import { ItemTache } from "../itemTache/itemTache.jsx";
+// Composant pour afficher la liste des tâches
 
-export const ListeTaches = (
-   {
-      listTache,
-      // pour l'item
-      editTache,
-      deleteTache,
-      // pour la liste
-      // tacheFinis,
-      tacheNonFinis,
-   }
-) => {
+export const ListeTaches = ({ lesTaches,   modifierTache,   supprimerTache }) => {
 
-   const listTachek = listTache.map((tache) => ( //boucle pour  afficher la liste des taches
-      <ItemTache
-         key={tache.id} 
+   const lesTachek = lesTaches.map((tache) => ( //boucle pour  afficher la liste des taches
+      <BlocDeChaqueTache 
+         key={tache.id} // pour donner une valeur unique à chaque élément de la liste
          tache={tache} 
-         editTache={editTache} 
-         deleteTache={deleteTache} />
-   ));   
+         modifierTache={modifierTache} 
+         supprimerTache={supprimerTache} />
+   )); 
 
-
-   if (listTache ){
-      return(
-         <>
-            <div className={styles.cadre}>
-               <h2 className={styles.titre}>
-                  Listes des {tacheNonFinis} taches à terminer :
-               </h2>
-               { listTache && listTache.length > 0 && (
-                  <ul className={styles.composant}>
-                     {/* <ItemTache /> */}
-                     { listTachek }
-                  </ul>
-               ) }
-               {/*                
-                  {listTache && listTache.length > 0 && (
-                  <ul className={styles.composant}>
-                     {listTache.map((tache) => (
-                        <ItemTache key={tache.id} />
-                     ))}
-                  </ul>
-                  )} 
-               */}
-            </div>
-         </>
+   if (lesTachek && lesTachek.length > 0) {
+      return (
+      <>
+         <div className={`box ${styles.element} ${styles.cadre}`}>
+            <h2 className={styles.titre}> <u>Liste des taches à terminer</u> :</h2>
+            { lesTaches && lesTaches.length > 0 && (
+               <ul className={styles.composant}>
+                  {/* <BlocDeChaqueTache /> */}
+                  { lesTachek }
+               </ul>
+            ) }
+         </div>
+      </>
       );
    } else {
-      return(
-         <>
-         <div className="box">
-            <div className={styles.cadre}>
-               <h2 className={styles.titre}>
-                  pas de tache à faire !
-               </h2>
-            </div>
+      return (
+      <>
+         <div className={`box ${styles.element} ${styles.cadre}`}>
+            <h2 className={styles.titre}>Pas de tache à terminer</h2>
          </div>
-         </>
+      </>
       );
    }
    
-}
-
-
+};
+   
+   

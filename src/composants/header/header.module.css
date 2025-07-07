@@ -7,7 +7,7 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 2px 0;
+   padding: 1px 0;
    margin-bottom: 1px;
 }
 .titleComposants {
@@ -16,6 +16,9 @@
    gap: 1px;
 }
 
+.couleur {
+   color: blue;
+}
 
 /* .logo {
    height: 6em;

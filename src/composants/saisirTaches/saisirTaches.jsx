@@ -6,45 +6,38 @@ import styles from "./saisirTache.module.css";
 
 // recupérer la propriété d'ajout de tache
 export const SaisirTache = ({ajouterTache}) => {
-
-   const [tache, setTache] = useState("");
-      // console.log(tache);
-      // console.log(ajouterTache);
-
-   const handleInputChange = (e) => {//pour recupérer les saisis
-      // console.log(e.target.value);
-      setTache(e.target.value);
-   };
-
-   const handleAjouterTache = (e) => {//
-      e.preventDefault();
-      if (tache.trim()) { //la méthode '.trim()' permet de supprimmer les espacements en debut et fin de saisis
-         ajouterTache(tache); //pour send la tache
-         setTache(" "); // pour reinitialiser la zone de saisie de tache
-      // console.log("envoi la tache", tache);
-      } else {
-         // console.log("le champ de saisis de tache est vide !"); //empty = vide
-      }
-   };
    
+   const [tache, setTache] = useState("");
+
+   const gererChangementEntree = (element) => {
+       // pour verifier la récupération de onChange={gererChangementEntree} dans 'input'
+      setTache (element.target.value);
+   };
+
+   const gererAjoutDeTache = (element) => {
+      element.preventDefault();
+      if (tache.trim()) {
+         ajouterTache(tache);
+         setTache("");
+      };
+   };
+
    return(
       <>
-         <div className={`box ${styles.element}`} > {/* pour introduire plusieurs classes: une classe générique'box' et une classe spécifique 'element' */}
-            <h2 className={styles.title}> Ajouter une tache : </h2>
-            <form action="" className={styles.composant} onSubmit={handleAjouterTache}> {/* 'onSubmit={handleAjouterTache}' permet de declancher la fonction d'ajout de tache à partir de handleAjouterTache*/} 
+         <div className={`box ${styles.element}`}>
+            <h2 className={styles.titre}> <u>Saisir votre tache</u> :</h2>
+            <form action="" className={styles.composant} onSubmit={gererAjoutDeTache}>
                <input type="text" className={styles.input}
-                  placeholder="zone de saisie de taches"
-                  onChange={handleInputChange} // appel de la fonction {handleInputChange}
+                  placeholder="saisir votre tache ici..."
+                  onChange={gererChangementEntree} // pour recupérer les entrées
                   value={tache}
                   required
                />
-               <br />
-               <button type="submit" className="button-primary">
+               <button type="submit" className={`button-primary ${styles.bouton}`}>
                   Ajouter la tache
                </button>
             </form>
          </div>
-      
       </>
    );
 
