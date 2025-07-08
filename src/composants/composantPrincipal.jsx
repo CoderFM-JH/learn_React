@@ -33,7 +33,9 @@ export const ComposantPrincipal = () => {
 
    const ajouterTache = (tache) => {
       const nouvelleTache = {
-         id: lesTaches.length + 1 , // pour avoir l'id de la nouvelle tache
+         id: lesTaches.length ? lesTaches[lesTaches.length - 1].id + 1 : 1,
+
+         // id: lesTaches.length ? lesTaches[lesTaches.length].id + 1 : 1 , // pour avoir l'id de la nouvelle tache
          tache: tache,
          terminee: false
       };
